@@ -127,6 +127,10 @@ header .css_tinh_nav{
     background-color: rgba(170, 206, 231, 0.6);
 }
 
+header {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
 /* .dropdown-submenu {
     position: relative;
   }
