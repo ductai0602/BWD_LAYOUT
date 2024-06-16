@@ -125,7 +125,10 @@ header {
 #df0218: mau do
 #fed014: mau vang
 */
-/* tinh */
+
+
+
+/* tinh - CLB */
 .baner{
     color: white;
     text-align: center;
@@ -181,3 +184,7 @@ header {
     padding-bottom: 3%;
     text-align: center;
 }
+#danhsach_anhclb_tinh{
+    width: 98%;
+}
+/* tinh - DOAN */
