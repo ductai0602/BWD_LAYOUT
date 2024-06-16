@@ -7,7 +7,7 @@
 }
 
 /* Phần giới thiệu */
-/* #phan_tren img{
+#phan_tren img{
     width: 140px;
     margin-left: 50px;
     height: 80px;
@@ -15,6 +15,7 @@
 
 #phan_tren{
     display: flex;
+    /* position: fixed; */
     background-color: #ffffff;
     width: 100%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -41,12 +42,9 @@
 
 #phan_tren .menubar a{
     color: #374f8a;
-} */
+}
 
 /*  */
-.css_tinh_nav{
-    background-color: rgba(170, 206, 231, 0.6);
-}
 
 header .main-menubox {
     display: none;
@@ -94,8 +92,9 @@ header .dropdown-item {
     padding: 8px 18px;
 }
 
-header .dropdown-item{
-    white-space: normal
+header .dropdown-item,
+header .nav-link{
+    white-space: nomal;
 }
 
 header .navbar-expand-lg .navbar-nav .dropdown-menu {
@@ -122,6 +121,14 @@ header .btn-fix{
 
 header .menu-drop{
     width: 210px;
+}
+
+header .css_tinh_nav{
+    background-color: rgba(170, 206, 231, 0.6);
+}
+
+header {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 /* .dropdown-submenu {
