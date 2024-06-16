@@ -7,44 +7,6 @@
 }
 
 /* Phần giới thiệu */
-#phan_tren img{
-    width: 140px;
-    margin-left: 50px;
-    height: 80px;
-}
-
-#phan_tren{
-    display: flex;
-    /* position: fixed; */
-    background-color: #ffffff;
-    width: 100%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    z-index: 1;
-}
-
-#phan_tren .menubar li{
-    display: inline-flex;
-    padding: 10px 15px;
-    position: relative;
-    transition: 0.1s ease-in-out;
-}
-
-#phan_tren .menubar{
-    width: 1000px;
-    margin-left: auto;
-    margin-top: 20px;
-}
-
-#phan_tren .menubar li:hover{
-    font-size: 16px;
-    transform: scale(1.2);
-}
-
-#phan_tren .menubar a{
-    color: #374f8a;
-}
-
-/*  */
 
 header .main-menubox {
     display: none;
@@ -131,15 +93,29 @@ header {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-/* .dropdown-submenu {
-    position: relative;
-  }
-  
-.dropdown-submenu .dropdown-menu {
-    top: 0;
-    left: 100%;
-    margin-top: -1px;
-} */
+#container {
+    position: relative; /* Đảm bảo các phần tử con có thể định vị tương đối so với nó */
+}
+
+/* Định dạng cho nút */
+#backToTopBtn {
+    position: fixed; /* Giữ nút luôn ở vị trí cố định trên màn hình */
+    bottom: 20px;    /* Cách đáy màn hình 20px */
+    right: 20px;     /* Cách bên phải màn hình 20px */
+    display: none;   /* Ẩn nút khi trang vừa tải */
+    background-color: #007bff; /* Màu nền nút */
+    color: white;    /* Màu chữ */
+    border: none;    /* Không viền */
+    padding: 4px 8px;   /* Khoảng cách bên trong nút */
+    border-radius: 5px; /* Bo tròn góc nút */
+    cursor: pointer; /* Con trỏ chuột khi di chuyển vào nút */
+    z-index: 1000;   /* Đảm bảo nút nằm trên các thành phần khác */
+    font-size: 24px;
+}
+
+#backToTopBtn:hover {
+    background-color: #0056b3; /* Màu nền khi hover */
+}
 
 /* Kết thúc phần trên */
 
