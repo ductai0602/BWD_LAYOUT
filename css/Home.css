@@ -128,3 +128,97 @@ header {
 
 
 
+/* tinh_vku */
+.tong_quan_VKU{
+    color: red;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: xx-large;
+    margin-left: 10%;
+    margin-top: 2%;
+}
+.noidung_tongquan_vku {
+    background-color: #007bff;
+    width: 80%;
+    padding-left: 5%;
+    padding-top: 1%;
+    margin-left: 10%;
+    border-radius: 20px;
+    display: flex;
+}
+.noidung_gioithieu_vku{
+    color: white;
+
+}
+.noidung2_gioithieu_vku{
+    color: white;
+    text-align: right;
+    margin-top: 2%;
+}
+.su_menh{
+    background-color: red;
+    width: 50%;
+    text-align: center;
+    border-radius: 10px;
+    color: white;
+    font-size: large;
+    margin-left: 24%;
+    margin-top: 5%;
+}
+.noidung_sumenh{
+    margin: 5%;
+    text-align: center;
+}
+.noidung_giatri{
+    margin: 5%;
+}
+.tamnhin{
+    background-color: blue;
+    width: 50%;
+    text-align: center;
+    border-radius: 10px;
+    color: white;
+    font-size: large;
+    margin-left: 24%;
+    margin-top: 5%;
+}
+.giatri{
+    background-color:yellow;
+    width: 50%;
+    text-align: center;
+    border-radius: 10px;
+    color: blue;
+    font-size: large;
+    margin-left: 24%;
+    margin-top: 5%;
+}
+.noidung_anhvku{
+    background-color: rgba(17, 17, 168, 0.7);
+    width: 50%;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    padding: 0.5%;
+    z-index: 2;
+    margin-left: auto;
+    margin-right: auto;
+}
+.giuaduoi_Home {
+    position: relative; /* Đặt vị trí tương đối cho div cha */
+    width: 100%; /* Chiều rộng của div cha */
+    max-width: 1000px; /* Chiều rộng tối đa của div cha */
+    margin: 0 auto; /* Căn giữa div cha */
+}
+
+
+
+.gioithieu_vku{
+    color: red;
+    margin-left: 8%;
+    margin-top: 2%;
+}
+.noidung_gioithieu{
+    padding: 5%;
+    padding-top: 1%;
+    padding-bottom: 0;
+    color: #007bff;
+}
