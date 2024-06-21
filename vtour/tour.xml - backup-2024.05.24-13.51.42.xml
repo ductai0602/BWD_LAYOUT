@@ -1,0 +1,563 @@
+﻿<krpano version="1.19" title="Virtual Tour">
+
+	<include url="skin/vtourskin.xml" />
+	<include url="plugins/combobox.xml" />
+	<contextmenu fullscreen="true" versioninfo="false"></contextmenu>
+
+	<!-- customize skin settings: maps, gyro, webvr, thumbnails, tooltips, layout, design, ... -->
+	<skin_settings maps="true"
+	               maps_type="custom"
+	               maps_bing_api_key=""
+	               maps_google_api_key=""
+	               maps_zoombuttons="false"
+	               maps_loadonfirstuse="true"
+	               gyro="true"
+	               gyro_keeplookingdirection="false"
+	               webvr="true"
+	               webvr_keeplookingdirection="true"
+	               webvr_prev_next_hotspots="true"
+	               littleplanetintro="false"
+	               followmousecontrol="false"
+	               title="true"
+	               thumbs="true"
+	               thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop=""
+	               thumbs_opened="false"
+	               thumbs_text="true"
+	               thumbs_dragging="true"
+	               thumbs_onhoverscrolling="false"
+	               thumbs_scrollbuttons="false"
+	               thumbs_scrollindicator="false"
+	               thumbs_loop="false"
+	               tooltips_buttons="false"
+	               tooltips_thumbs="false"
+	               tooltips_hotspots="false"
+	               tooltips_mapspots="false"
+	               deeplinking="false"
+	               loadscene_flags="MERGE"
+	               loadscene_blend="ZOOMBLEND(1.3, 1.3, easeInOutSine)"
+	               loadscene_blend_prev="SLIDEBLEND(0.5, 180, 0.75, linear)"
+	               loadscene_blend_next="SLIDEBLEND(0.5,   0, 0.75, linear)"
+	               loadingtext="loading..."
+	               layout_width="100%"
+	               layout_maxwidth="814"
+	               controlbar_width="-24"
+	               controlbar_height="40"
+	               controlbar_offset="20"
+	               controlbar_offset_closed="-40"
+	               controlbar_overlap.no-fractionalscaling="10"
+	               controlbar_overlap.fractionalscaling="0"
+	               design_skin_images="vtourskin.png"
+	               design_bgcolor="0x304954"
+	               design_bgalpha="0.7"
+	               design_bgborder="0"
+	               design_bgroundedge="1"
+	               design_bgshadow="0 4 10 0x000000 0.3"
+	               design_thumbborder_bgborder="3 0xFFFFFF 1.0"
+	               design_thumbborder_padding="2"
+	               design_thumbborder_bgroundedge="0"
+	               design_text_css="color:#FFFFFF; font-family:Arial;"
+	               design_text_shadow="1"
+	               />
+
+	<!-- add a custom map (container+scrollarea+image) -->
+		<layer name="skin_layer">
+			<layer name="skin_scroll_window">
+				<layer name="skin_scroll_layer">
+					<layer name="skin_scroll_container">
+						<layer name="skin_map_container">
+							<layer name="skin_map" type="container">
+								<layer name="skin_map_scrollarea" url="plugins/scrollarea.js" align="center" width="100%" height="100%">
+								</layer>
+							</layer>
+						</layer>
+					</layer>
+				</layer>
+			</layer>
+		</layer>
+
+		
+	<!--
+	    For an alternative skin design either change the <skin_settings> values 
+	    from above or optionally include one of the predefined designs from below.
+	-->
+	<!-- <include url="skin/vtourskin_design_flat_light.xml"  /> -->
+	<!-- <include url="skin/vtourskin_design_glass.xml"       /> -->
+	<include url="skin/vtourskin_design_ultra_light.xml" />
+	<!-- <include url="skin/vtourskin_design_117.xml"         /> -->
+	<!-- <include url="skin/vtourskin_design_117round.xml"    /> -->
+	<!-- <include url="skin/vtourskin_design_black.xml"       /> -->
+		<!-- mixed static/dynamic example - add items dynamically -->
+	<combobox name="cbscenes" design="glas" align="lefttop" x="10" y="10" onloaded="add_scene_items();" />
+	<action name="add_scene_items" scope="local">
+    caller.additem(calc('[img src=[dq]./skin/logo-VKU.svg[dq] style=[dq]width:100px;height:50px;vertical-align:middle;margin-right:8px;[dq]/] '), null, null);
+
+		for(set(i,0), i LT scene.count, inc(i),
+			caller.additem(calc('[img src=[dq]' + scene[get(i)].thumburl +  '[dq] style=[dq]border:1px solid rgba(255,255,255,0.5);width:100px;height:50px;vertical-align:middle;margin-right:8px;[dq]/] '+scene[get(i)].title), calc('loadscene('+i+',null,MERGE,BLEND(0.5))') );
+		);
+	</action>
+
+	<!-- full dynamic example -->
+	
+
+
+	<!-- some custom example designs -->
+	<combobox_design name="rounded" margin="3" open_close_speed="0.25">
+		<style name="combobox_container_style"
+			bgcolor="0xFFFFFF"
+			bgalpha="0.95"
+			bgborder="1 0xFFFFFF 0.5"
+			bgroundedge="5"
+			bgshadow="2 4 20 0x000000 0.5"
+			/>
+		<style name="combobox_marker_style"
+			css="color:#999999;"
+			bg="false"
+			txtshadow=""
+			/>
+		<style name="combobox_item_style"
+			css="color:#222222;"
+			padding="4 4"
+			bg="false"
+			bgcolor="0xCCCCCC"
+			bgalpha="1.0"
+			bgroundedge="3"
+			txtshadow=""
+			onoveritem="set(css, 'color:#2277FF;');"
+			onoutitem="set(css, 'color:#222222;');"
+			/>
+	</combobox_design>
+
+	<combobox_design name="classic" margin="0" open_close_speed="0.25">
+		<style name="combobox_container_style"
+			bgcolor="0xFFFFFF"
+			bgalpha="1.0"
+			bgborder="2 0x333333 0.5"
+			bgroundedge="0"
+			bgshadow=""
+			height="50"
+			/>
+		<style name="combobox_marker_style"
+			css="color:#222222;"
+			bg="false"
+			txtshadow=""
+			/>
+		<style name="combobox_item_style"
+			css="color:#222222;"
+			padding="7"
+			bg="false"
+			bgcolor="0x777777"
+			bgalpha="1.0"
+			bgroundedge="0"
+			txtshadow=""
+			onoveritem="set(bg,true); set(css, 'color:#FFFFFF;');"
+			onoutitem="set(bg,false); set(css, 'color:#222222;');"
+			/>
+	</combobox_design>
+	
+	<combobox_design name="glas" margin="2" open_close_speed="0.25">
+		<style name="combobox_container_style"
+			bgcolor="#ffffff"
+			bgalpha="0"
+			bgborder="1 #ffffff 0.5"
+			bgroundedge="5"
+			height="50"
+			/>
+		<style name="combobox_marker_style"
+			css="color:#ffffff;"
+			alpha="0.7"
+			bg="false"
+			txtshadow=""
+			/>
+		<style name="combobox_item_style"
+			css="color:#ffffff;"
+			padding="4"
+			bg="false"
+			bgborder="1 #ffffff 0.0"
+			bgcolor="0xFFFFFF"
+			bgalpha="0.6"
+			bgroundedge="3"
+			txtshadow="0 0 4 0xFFFFFF 1"
+			onoveritem="set(bg,true); set(bgborder, '1 0x333333 0.5');"
+			onoutitem="set(bg,false); set(bgborder, '1 0x333333 0.0');"
+			/>
+	</combobox_design>
+
+		<!-- hotspot -->
+	<style name="skin_hotspotstyle" 
+       keep="false"
+	   distorted="false"
+       scalechildren="false"
+  	/>
+	<!-- startup action - load the first scene -->
+	<action name="startup" autorun="onstart">
+		if(startscene === null OR !scene[get(startscene)], copy(startscene,scene[0].name); );
+		loadscene(get(startscene), null, MERGE);
+		if(startactions !== null, startactions() );
+	</action>
+
+	<!-- Crop action -->
+	<action name="do_crop_animation" scope="local" args="framewidth, frameheight, framerate">
+		<!-- define local variables -->
+		calc(local.xframes, (caller.imagewidth /framewidth) BOR 0);
+		calc(local.frames, xframes * ((caller.imageheight / frameheight) BOR 0));
+		def(local.frame, integer, 0);
+		
+		<!-- set the first frame -->
+		calc(caller.crop, '0|0|' + framewidth + '|' + frameheight);
+		
+		<!-- do the animation -->
+		setinterval(calc('crop_anim_' + caller.name), calc(2.5 / framerate),
+			if(caller.loaded,
+				inc(frame);
+				if(frame GE frames, if(caller.onlastframe !== null, callwith(caller, onlastframe() ) ); set(frame,0); );
+				mod(xpos, frame, xframes);
+				div(ypos, frame, xframes);
+				Math.floor(ypos);
+				mul(xpos, framewidth);
+				mul(ypos, frameheight);
+				
+				calc(caller.crop, xpos + '|' + ypos + '|' + framewidth + '|' + frameheight);
+			  ,
+				<!-- stop the interval when the hotspot gets removed -->
+				clearinterval(calc('crop_anim_' + caller.name));
+			);
+		);
+	</action>
+
+			<!-- Custom look to hotspot -->
+	<action name="custom_looktohotspot">
+    	looktohotspot(get(name), 120, 300, easeInOutQuad);  
+    	wait(0.35);  
+    	loadscene(get(linkedscene), null, MERGE,BLEND(1.3, 1.3, easeInOutSine));
+
+	</action>
+	
+	<scene name="scene_1" title="Cổng trường VKU" onstart="" thumburl="panos/1.tiles/thumb.jpg" lat="15.97505833" lng="108.25361111" heading="0.0">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="90" fovmax="140" limitview="auto" />
+
+		<preview url="panos/1.tiles/preview.jpg" />
+
+		<image prealign="0|0.0|0">
+			<cube url="panos/1.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" url="./skin/animatedhotspot_white.png" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_12].title" onloaded="do_crop_animation(64,64, 60);" onclick="custom_looktohotspot();" ath="39.777" atv="-0.557" linkedscene="scene_12" width="150" height="150" scale="0.5" />
+	</scene>	 
+
+	<scene name="scene_2" title="Ký túc xá dịch vụ" onstart="" thumburl="panos/2.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="90.317" vlookat="2.909" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="90" fovmax="140" limitview="auto" />
+
+		<preview url="panos/2.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/2.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_17].title" ath="87.541" atv="14.597" linkedscene="scene_3" scale="0.5" />
+		<hotspot name="spot2" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_17].title" ath="-89.360" atv="12.037" linkedscene="scene_12" scale="0.5" />
+
+	</scene>
+
+	<scene name="scene_3" title="Ký túc xá dịch vụ" onstart="" thumburl="panos/3.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="90" fovmax="140" limitview="auto" />
+
+		<preview url="panos/3.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/3.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_17].title" ath="-84.377" atv="14.698" linkedscene="scene_2" scale="0.5" />
+		<hotspot name="spot2" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_17].title" ath="2.395" atv="9.829" linkedscene="scene_4" scale="0.5" />
+
+	</scene>
+
+	<scene name="scene_4" title="Ký túc xá dịch vụ" onstart="" thumburl="panos/4.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-90.415" vlookat="6.894" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="90" fovmax="140" limitview="auto" />
+
+		<preview url="panos/4.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/4.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_17].title" ath="-90.064" atv="17.812" linkedscene="scene_5" scale="0.5" />
+		<hotspot name="spot2" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_17].title" ath="94.815" atv="10.022" linkedscene="scene_3" scale="0.5" />
+		<hotspot name="spot3" url="./skin/animatedhotspot_white.png" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_22].title" onloaded="do_crop_animation(64,64, 60);" onclick="custom_looktohotspot();" ath="-40.676" atv="-2.501" scale="1" linkedscene="scene_22" />
+
+	</scene>
+
+	<scene name="scene_5" title="5" onstart="" thumburl="panos/5.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="89.430" vlookat="6.163" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="90" fovmax="140" limitview="auto" />
+
+		<preview url="panos/5.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/5.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_17].title" ath="-85.465" atv="11.300" linkedscene="scene_4" scale="0.5" />
+		<hotspot name="spot2" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_17].title" ath="85.463" atv="4.561" linkedscene="scene_6" scale="0.5" />
+		<hotspot name="spot3" url="./skin/animatedhotspot_white.png" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_22].title" onloaded="do_crop_animation(64,64, 60);" onclick="custom_looktohotspot();" ath="-154.787" atv="-3.939" linkedscene="scene_22" scale="1" />
+		<hotspot name="spot4" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_17].title" ath="2.497" atv="6.163" linkedscene="scene_14" scale="0.5" />
+
+	</scene>
+
+	<scene name="scene_6" title="6" onstart="" thumburl="panos/6.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="90" fovmax="140" limitview="auto" />
+
+		<preview url="panos/6.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/6.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_5].title" ath="-175.654" atv="4.554" linkedscene="scene_5" scale="0.8" distorted="true" ry="-80" rotate="90"/>
+		<hotspot name="spot2" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_7].title" ath="1.606" atv="9.576" linkedscene="scene_7" scale="0.5" />
+
+	</scene>
+
+	<scene name="scene_7" title="7" onstart="" thumburl="panos/7.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="90" fovmax="140" limitview="auto" />
+
+		<preview url="panos/7.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/7.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_17].title" ath="-173.533" atv="4.567" linkedscene="scene_6" scale="0.5" />
+		<hotspot name="spot2" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_17].title" ath="1.986" atv="6.762" linkedscene="scene_8" scale="0.5" />
+
+	</scene>
+
+	<scene name="scene_8" title="8" onstart="" thumburl="panos/8.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="120.032" vlookat="-0.629" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="90" fovmax="140" limitview="auto" />
+
+		<preview url="panos/8.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/8.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_17].title" ath="3.060" atv="10.066" linkedscene="scene_7" scale="0.5" />
+		<hotspot name="spot2" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_17].title" ath="108.743" atv="10.288" linkedscene="scene_9" scale="0.5" />
+
+	</scene>
+
+	<scene name="scene_9" title="9" onstart="" thumburl="panos/9.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="90" fovmax="140" limitview="auto" />
+
+		<preview url="panos/9.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/9.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_8].title" ath="24.318" atv="5.528" linkedscene="scene_8" scale="0.75" distorted="true" ry="-75" rotate="90" />
+		<hotspot name="spot2" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_11].title" ath="-21.425" atv="5.528" linkedscene="scene_11" scale="0.75" distorted="true" ry="-75" rotate="-85" />
+		<hotspot name="spot3" url="./skin/animatedhotspot_white.png" style="skin_hotspotstyle|skin_tooltips" onloaded="do_crop_animation(64,64, 60);" onclick="custom_looktohotspot();" tooltip="get:scene[scene_10].title" ath="-48.273" atv="-2.890" linkedscene="scene_10" scale="1" />
+		<hotspot name="spot4" url="./skin/animatedhotspot_white.png" style="skin_hotspotstyle|skin_tooltips" onloaded="do_crop_animation(64,64, 60);" onclick="custom_looktohotspot();" tooltip="get:scene[scene_15].title" ath="156.355" atv="-5.204" linkedscene="scene_15" scale="1" />
+		<hotspot name="spot5" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_14].title" ath="-177.747" atv="6.662" linkedscene="scene_14" scale="0.5" />
+
+	</scene>
+
+	<scene name="scene_10" title="10" onstart="" thumburl="panos/10.tiles/thumb.jpg" lat="15.97299722" lng="108.25226111" heading="0.0">
+
+		<view hlookat="-287.091" vlookat="1.644" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="90" fovmax="140" limitview="auto" />
+
+		<preview url="panos/10.tiles/preview.jpg" />
+
+		<image prealign="0|0.0|0">
+			<cube url="panos/10.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_11].title" ath="170.839" atv="3.209" linkedscene="scene_11" scale="0.5" />
+		<hotspot name="spot2" url="./skin/animatedhotspot_white.png" style="skin_hotspotstyle|skin_tooltips" onloaded="do_crop_animation(64,64, 60);" onclick="custom_looktohotspot();" tooltip="get:scene[scene_9].title" ath="131.656" atv="-5.180" linkedscene="scene_9" scale="1" />
+
+	</scene>
+
+	<scene name="scene_11" title="11" onstart="" thumburl="panos/11.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="90" fovmax="140" limitview="auto" />
+
+		<preview url="panos/11.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/11.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_17].title" ath="0.316" atv="6.861" linkedscene="scene_9" scale="0.5" />
+		<hotspot name="spot2" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_17].title" ath="86.794" atv="3.335" linkedscene="scene_12" scale="0.5" />
+
+	</scene>
+
+	<scene name="scene_12" title="12" onstart="" thumburl="panos/12.tiles/thumb.jpg" lat="15.97520000" lng="108.25282778" heading="0.0">
+
+		<view hlookat="-2.823" vlookat="-7.843" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="90" fovmax="140" limitview="auto" />
+
+		<preview url="panos/12.tiles/preview.jpg" />
+
+		<image prealign="0|0.0|0">
+			<cube url="panos/12.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_17].title" ath="153.245" atv="5.190" linkedscene="scene_1" scale="0.5" />
+		<hotspot name="spot2" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_17].title" ath="89.499" atv="1.044" linkedscene="scene_2" scale="0.5" />
+		<hotspot name="spot3" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_17].title" ath="-92.627" atv="2.614" linkedscene="scene_11" scale="0.5" />
+		<hotspot name="spot4" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_17].title" ath="-0.788" atv="6.314" linkedscene="scene_13" scale="0.5" />
+		<hotspot name="spot5" url="./skin/animatedhotspot_white.png" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_17].title" onloaded="do_crop_animation(64,64, 60);" onclick="custom_looktohotspot();" ath="-38.581" atv="-5.655" linkedscene="scene_17" scale="1" />
+		<hotspot name="spot6" url="./skin/animatedhotspot_white.png" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_21].title" onloaded="do_crop_animation(64,64, 60);" onclick="custom_looktohotspot();" ath="60.215" atv="-5.755" linkedscene="scene_21" scale="1" />
+
+	</scene>
+
+	<scene name="scene_13" title="13" onstart="" thumburl="panos/13.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="-4.078" vlookat="-4.915" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="90" fovmax="140" limitview="auto" />
+
+		<preview url="panos/13.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/13.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_17].title" ath="-107.181" atv="6.538" linkedscene="scene_17" scale="0.75" distorted="true" rotate="29" ry="-65"/>
+		<hotspot name="spot2" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_21].title" ath="102.694" atv="5.804" linkedscene="scene_21" scale="0.75" distorted="true" rotate="-29" ry="65" />
+		<hotspot name="spot3" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_14].title" ath="0.165" atv="14.899" linkedscene="scene_14" scale="0.5" />
+		<hotspot name="spot4" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_12].title" ath="179.323" atv="10.079" linkedscene="scene_12" scale="0.5" />
+		<hotspot name="spot5" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_18].title" ath="34.736" atv="3.745" linkedscene="scene_18" scale="0.5" />
+		<hotspot name="spot6" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_16].title" ath="-31.150" atv="4.452" linkedscene="scene_16" scale="0.5" />
+
+	</scene>
+
+	<scene name="scene_14" title="14" onstart="" thumburl="panos/14.tiles/thumb.jpg" lat="15.97509167" lng="108.25198056" heading="0.0">
+
+		<view hlookat="-1.569" vlookat="-9.621" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="90" fovmax="140" limitview="auto" />
+
+		<preview url="panos/14.tiles/preview.jpg" />
+
+		<image prealign="0|0.0|0">
+			<cube url="panos/14.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" url="./skin/animatedhotspot_white.png" style="skin_hotspotstyle|skin_tooltips" onloaded="do_crop_animation(64,64, 60);" onclick="custom_looktohotspot();" tooltip="get:scene[scene_18].title" ath="100.169" atv="-10.992" linkedscene="scene_18" scale="1" />
+		<hotspot name="spot2" url="./skin/animatedhotspot_white.png" style="skin_hotspotstyle|skin_tooltips" onloaded="do_crop_animation(64,64, 60);" onclick="custom_looktohotspot();" tooltip="get:scene[scene_19].title" ath="48.167" atv="-8.374" linkedscene="scene_19" scale="1" />
+		<hotspot name="spot3" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_13].title" ath="178.586" atv="6.553" linkedscene="scene_13" scale="0.5" />
+		<hotspot name="spot4" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_15].title" ath="-55.728" atv="2.432" linkedscene="scene_15" scale="0.5" />
+		<hotspot name="spot5" url="./skin/animatedhotspot_white.png" style="skin_hotspotstyle|skin_tooltips" onloaded="do_crop_animation(64,64, 60);" onclick="custom_looktohotspot();" tooltip="get:scene[scene_16].title" ath="-131.321" atv="-6.622" linkedscene="scene_16" scale="1" />
+		<hotspot name="spot6" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_5].title" ath="70.783" atv="1.001" linkedscene="scene_5" scale="0.5" />
+
+	</scene>
+
+	<scene name="scene_15" title="15" onstart="" thumburl="panos/15.tiles/thumb.jpg" lat="15.97465278" lng="108.25151667" heading="0.0">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="90" fovmax="140" limitview="auto" />
+
+		<preview url="panos/15.tiles/preview.jpg" />
+
+		<image prealign="0|0.0|0">
+			<cube url="panos/15.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_9].title" ath="-159.890" atv="2.886" linkedscene="scene_9" scale="0.75" distorted="true" ry="-80" rotate="85"/>
+		<hotspot name="spot2" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_14].title" ath="157.559" atv="3.11" linkedscene="scene_14" scale="0.75" distorted="true" ry="-80" rotate="268" />
+
+	</scene>
+
+	<scene name="scene_16" title="16" onstart="" thumburl="panos/16.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="90" fovmax="140" limitview="auto" />
+
+		<preview url="panos/16.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/16.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_17].title" ath="-88.187" atv="1.360" linkedscene="scene_17" scale="0.5" />
+		<hotspot name="spot2" url="./skin/animatedhotspot_white.png" style="skin_hotspotstyle|skin_tooltips" onloaded="do_crop_animation(64,64, 60);" onclick="custom_looktohotspot();" tooltip="get:scene[scene_14].title" ath="117.690" atv="-6.711" linkedscene="scene_14" scale="1" />
+		<hotspot name="spot3" url="./skin/animatedhotspot_white.png" style="skin_hotspotstyle|skin_tooltips" onloaded="do_crop_animation(64,64, 60);" onclick="custom_looktohotspot();" tooltip="get:scene[scene_13].title" ath="-120.249" atv="-5.950" linkedscene="scene_13" scale="1" />
+
+	</scene>
+
+	<scene name="scene_17" title="17" onstart="" thumburl="panos/17.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="90" fovmax="140" limitview="auto" />
+
+		<preview url="panos/17.tiles/preview.jpg" />
+
+		<image>
+			<cube url="panos/17.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_16].title" ath="88.583" atv="3.100" linkedscene="scene_16" scale="0.5" />
+		<hotspot name="spot2" url="./skin/animatedhotspot_white.png" style="skin_hotspotstyle|skin_tooltips" onloaded="do_crop_animation(64,64, 60);" onclick="custom_looktohotspot();" tooltip="get:scene[scene_13].title" ath="134.748" atv="-3.8" linkedscene="scene_13" scale="1" />
+		<hotspot name="spot3" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_20].title" ath="0.313" atv="9.827" linkedscene="scene_20" scale="0.5" />
+		<hotspot name="spot4" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_12].title" ath="-88.627" atv="6.229" linkedscene="scene_12" scale="0.5" />
+
+	</scene>
+
+	<scene name="scene_18" title="18" onstart="" thumburl="panos/18.tiles/thumb.jpg" lat="15.97509167" lng="108.25198056" heading="0.0">
+
+		<view hlookat="-0.418" vlookat="-8.366" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="90" fovmax="140" limitview="auto" />
+
+		<preview url="panos/18.tiles/preview.jpg" />
+
+		<image prealign="0|0.0|0">
+			<cube url="panos/18.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_19].title" ath="-32.790" atv="8.269" linkedscene="scene_19" scale="1" distorted="true" ry="-80" rotate="-80"/>
+		<hotspot name="spot2" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_21].title" ath="34.303" atv="8.235" linkedscene="scene_21" scale="1" distorted="true" ry="-80" rotate="79"/>
+		<hotspot name="spot3" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_14].title" ath="179.389" atv="14.208" linkedscene="scene_14" scale="0.5" />
+
+	</scene>
+
+	<scene name="scene_19" title="19" onstart="" thumburl="panos/19.tiles/thumb.jpg" lat="15.97513056" lng="108.25178889" heading="0.0">
+
+		<view hlookat="-1.778" vlookat="-7.216" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="90" fovmax="140" limitview="auto" />
+
+		<preview url="panos/19.tiles/preview.jpg" />
+
+		<image prealign="0|0.0|0">
+			<cube url="panos/19.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_18].title" ath="90.020" atv="4.832" linkedscene="scene_18" scale="0.5" />
+		<hotspot name="spot2" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_5].title" ath="63.363" atv="0.673" linkedscene="scene_5" scale="1" distorted="true" ry="-81" rotate="-85" />
+
+	</scene>
+
+	<scene name="scene_20" title="20" onstart="" thumburl="panos/20.tiles/thumb.jpg" lat="15.97506389" lng="108.25345833" heading="0.0">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="90" fovmax="140" limitview="auto" />
+
+		<preview url="panos/20.tiles/preview.jpg" />
+
+		<image prealign="0|0.0|0">
+			<cube url="panos/20.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_17].title" ath="-175.757" atv="10.619" linkedscene="scene_17" scale="0.5" />
+
+	</scene>
+
+	<scene name="scene_21" title="21" onstart="" thumburl="panos/21.tiles/thumb.jpg" lat="15.97675833" lng="108.25230556" heading="0.0">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="90" fovmax="140" limitview="auto" />
+
+		<preview url="panos/21.tiles/preview.jpg" />
+
+		<image prealign="0|0.0|0">
+			<cube url="panos/21.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_17].title" ath="86.703" atv="2.476" linkedscene="scene_12" scale="0.5" />
+		<hotspot name="spot2" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_17].title" ath="-83.655" atv="5.730" linkedscene="scene_18" scale="0.5" />
+		<hotspot name="spot3" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_17].title" ath="-173.610" atv="-1.139" linkedscene="scene_13" scale="0.5" />
+
+	</scene>
+
+	<scene name="scene_22" title="22" onstart="" thumburl="panos/22.tiles/thumb.jpg" lat="15.97675833" lng="108.25230556" heading="0.0">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="90" fovmax="140" limitview="auto" />
+
+		<preview url="panos/22.tiles/preview.jpg" />
+
+		<image prealign="0|0.0|0">
+			<cube url="panos/22.tiles/pano_%s.jpg" />
+		</image>
+		<hotspot name="spot1" style="skin_hotspotstyle|skin_tooltips" tooltip="get:scene[scene_17].title" ath="-54.270" atv="-0.322" linkedscene="scene_5" scale="0.5" />
+
+	</scene>
+
+
+</krpano>
