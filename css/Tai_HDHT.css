@@ -799,6 +799,11 @@
   height: 300px;
   object-fit: cover;
   margin: 0;
+  transition: filter 0.5s ease;
+}
+
+.img-spe:hover{
+  filter: brightness(0.5);
 }
 
 .anh_hoc_thuat .padding-0{
@@ -813,6 +818,10 @@
 .activities-title .card{
   width: 22rem;
   padding-top: 14px;
+}
+
+.activities-title .card:hover{
+  color: #da3636;
 }
 
 .activities-title .container{
