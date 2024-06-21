@@ -1,0 +1,138 @@
+.img-spe{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    margin: 0;
+}
+
+#main-content .content-1{
+    background-image: url(../images/Anh_cua_Tai/hinh_nen_CHNN.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+    height: 840px;
+}
+
+#main-content .content-1 h2,
+#main-content .content-1 p{
+    font-weight: 600;
+    position: relative;
+}
+
+#main-content .content-1 h2{
+    text-shadow: 8px 6px 4px rgba(0, 0, 0, 0.3);
+    max-width: 100%;
+    font-size: 46px;
+    padding: 8rem 6rem;
+}
+
+#main-content .content-1 p{
+    align-self: stretch;
+    text-align: left;
+    margin: 0 6rem;
+    width: auto;
+}
+
+#next-content .content-2{
+    display: flex;
+    background-color: #fffef1;
+    justify-content: center;
+    align-items: center;
+    height: 8rem;
+    position: absolute;
+    box-shadow: 0 6px 9px rgba(0, 0, 0, 0.2), 0 -6px 9px rgba(0, 0, 0, 0.2); 
+    transform: translateY(-100px);
+}
+
+#next-content .content-2 ul{
+    display: inline-flex;
+    list-style-type: none;
+    align-content: center;
+    padding: 0;
+    margin: 0;
+    gap: 10px; 
+}
+
+#next-content .content-2 li{
+    font-size: 5rem;
+    font-weight: 600;
+}
+
+#third-content .content-3{
+    width: 100%;
+    margin-top: 6rem;
+}
+
+#third-content .content-3 h3{
+    text-align: center;
+    font-weight: 600;
+    color: #df0218;
+    font-size: 36px;
+}
+
+#third-content .main-action{
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+}
+
+#third-content .main-action .card{
+    width: 22rem;
+    padding-top: 14px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 5%;
+}
+
+.carousel-control-prev {
+  left: -5%;
+}
+
+.carousel-control-next {
+  right: -5%; 
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #2b4eaa; 
+  background-size: 100%, 100%; 
+}
+
+#four-content .content-4 .anh-action{
+    margin-top: 4rem;
+    margin-bottom: 6rem;
+}
+
+#four-content .content-4 h4{
+    text-align: center;
+}
+
+#four-content .content-4 .img-content-4{
+    margin-top: 10px;
+}
+
+#five-content{
+    width: 100%;
+    background-color: #8f8f8f1a;
+    padding-top: 2rem;
+}
+
+#five-content .content-5 .tieu-de{
+    text-align: center;
+}
+
+#five-content .content-5 .tieu-de h3{
+    color: #df0218;
+    font-weight: 600;
+    font-size: 36px;
+}
+
+#five-content .padding-0{
+    padding: 0;
+}
+
+#five-content .more-anh-action{
+    padding-top: 3rem;
+    padding-bottom: 5rem;
+}
