@@ -1,0 +1,95 @@
+/* tinh - DOAN */
+.dang_chu_y{
+    color: white;
+    font-size: 130%;
+    padding-left: 5%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    /* font-weight: 500; */
+}
+#danhsach_anhdoan{
+    margin-left: 1.5%;
+}
+#nut_back_tinh_doan{
+    left: -4%;
+}
+#nut_next_tinh_doan{
+    right: 3%;
+}
+.tatca_than_doan_tinh{
+    height: 110vh;
+    width: 100%;
+    background-image: linear-gradient(0, rgba(0, 21, 255, 0.4),rgba(0, 21, 255, 0.4)), url(https://i.ytimg.com/vi/ofbSI6gWu9o/maxresdefault.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.cachoatdongkhac_doantinh{
+    color: white;
+    font-size: 3vh;
+    padding-top: 1%;
+    /* padding-left: 6%; */
+    font-weight: 500;
+}
+.tren_hoatdongkhac_doantinh a{
+    color: white;
+    text-decoration: none;
+    font-size: 90%;
+    font-weight: 100;
+}
+
+.thantren_phai_doantinh{
+    margin-right: 0%;
+}
+.noidung_doan_tinh{
+    font-weight: 300;
+}
+/* @media only screen and (min-width: 739px) {
+    .thantren_doantinh {
+        display: flex;
+    }
+}
+@media only screen and (min-width: 500px) {
+    .thanduoi_doantinh{
+        display: flex;
+    }
+}
+@media only screen and (min-width: 300px) {
+    .tren_hoatdongkhac_doantinh{
+        display: flex;
+    }
+} */
+
+.noidung_giuaduoitrai{
+    color: white;
+    font-size: 120%;
+    padding-left: 7%;
+    padding-bottom: 2%;
+}
+.ds1, .ds2, .ds3, .ds4, .ds5 , .ds6, .ds7{
+    width: 90%;
+}
+.ds1> img, .ds2 > img, .ds3 >img, .ds4 >img, .ds5>img , .ds6>img, .ds7>img{
+    border-radius: 20%;
+}
+.tinhnguyen_lietsi_doanTinh{
+    color: white;
+    font-size: 20%x;
+}
+
+.anhtinhnguyen_doantinh{
+    display: flex;
+}
+.giua_duoi_trai{
+    margin-top: 3%;
+    padding-right: 0;
+    padding-left: 4%;
+}
+.divanh_doan_tinh > img
+{
+    border-radius: 20px;
+    width: 80%;
+    padding-bottom: 5%;
+}
+.giua_duoi_phai_doanTinh{
+    padding-left: 5%;
+}
