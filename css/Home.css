@@ -1,0 +1,229 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+/* Phần giới thiệu */
+
+header .main-menubox {
+    display: none;
+}
+
+header .main-menu:hover .main-menubox{
+    display: block;
+}
+
+
+header .dropdown-submenu{
+    position: relative;
+}
+
+header .dropdown-submenu a::after{
+    transform: rotate(-90deg);
+    position: absolute;
+    right: 3px;
+    top: 40%;
+}
+header .dropdown-submenu:hover .dropdown-menu, .dropdown-submenu:focus .dropdown-menu{
+    display: flex;
+    flex-direction: column;
+    position: absolute !important;
+    margin-top: -30px;
+    left: 100%;
+}
+@media (max-width: 992px) {
+    .dropdown-menu{
+        width: 50%;
+    }
+    .dropdown-menu .dropdown-submenu{
+        width: auto;
+    }
+
+    .dropdown-menu{ left: -131%;}
+}
+
+header .dropdown-submenu a::after {
+    right: 16px;
+    top: 42%;
+}
+
+header .dropdown-item {
+    padding: 8px 18px;
+}
+
+header .dropdown-item,
+header .nav-link{
+    white-space: nomal;
+}
+
+header .navbar-expand-lg .navbar-nav .dropdown-menu {
+    font-size: 14px;
+}
+
+header .dropdown-item:focus, .dropdown-item:hover {
+    color: #16181b;
+    text-decoration: none;
+    background-color: #dcdcdc;
+}
+
+header li.nav-item{    
+    padding: 10px 20px;
+}
+
+.nav-item{
+    text-wrap: nowrap;
+}
+
+header .navbar-nav.ml-auto {
+    margin-left: auto !important;
+}
+
+header .btn-fix{
+    padding: 2px 8px;
+}
+
+header .menu-drop{
+    width: 210px;
+}
+
+header .css_tinh_nav{
+    background-color: rgba(170, 206, 231, 0.6);
+}
+
+header {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#container {
+    position: relative; /* Đảm bảo các phần tử con có thể định vị tương đối so với nó */
+}
+
+/* Định dạng cho nút */
+#backToTopBtn {
+    position: fixed; /* Giữ nút luôn ở vị trí cố định trên màn hình */
+    bottom: 20px;    /* Cách đáy màn hình 20px */
+    right: 20px;     /* Cách bên phải màn hình 20px */
+    display: none;   /* Ẩn nút khi trang vừa tải */
+    background-color: #007bff; /* Màu nền nút */
+    color: white;    /* Màu chữ */
+    border: none;    /* Không viền */
+    padding: 4px 8px;   /* Khoảng cách bên trong nút */
+    border-radius: 5px; /* Bo tròn góc nút */
+    cursor: pointer; /* Con trỏ chuột khi di chuyển vào nút */
+    z-index: 1000;   /* Đảm bảo nút nằm trên các thành phần khác */
+    font-size: 24px;
+}
+
+#backToTopBtn:hover {
+    background-color: #0056b3; /* Màu nền khi hover */
+}
+
+/* Kết thúc phần trên */
+
+
+/* 
+#374f8a: mau xanh 
+#df0218: mau do
+#fed014: mau vang
+*/
+
+
+/* tinh_vku */
+.tong_quan_VKU{
+    color: red;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: xx-large;
+    margin-left: 10%;
+    margin-top: 2%;
+}
+.noidung_tongquan_vku {
+    background-color: #007bff;
+    width: 80%;
+    padding-left: 5%;
+    padding-top: 1%;
+    margin-left: 10%;
+    border-radius: 20px;
+    display: flex;
+}
+.noidung_gioithieu_vku{
+    color: white;
+
+}
+.noidung2_gioithieu_vku{
+    color: white;
+    text-align: right;
+    margin-top: 2%;
+}
+.su_menh{
+    background-color: red;
+    width: 50%;
+    text-align: center;
+    border-radius: 10px;
+    color: white;
+    font-size: large;
+    margin-left: 24%;
+    margin-top: 5%;
+}
+.noidung_sumenh{
+    margin: 5%;
+    text-align: center;
+}
+.noidung_giatri{
+    margin: 5%;
+}
+.tamnhin{
+    background-color: blue;
+    width: 50%;
+    text-align: center;
+    border-radius: 10px;
+    color: white;
+    font-size: large;
+    margin-left: 24%;
+    margin-top: 5%;
+}
+.giatri{
+    background-color:yellow;
+    width: 50%;
+    text-align: center;
+    border-radius: 10px;
+    color: blue;
+    font-size: large;
+    margin-left: 24%;
+    margin-top: 5%;
+}
+.noidung_anhvku{
+    background-color: rgba(17, 17, 168, 0.7);
+    width: 50%;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    padding: 0.5%;
+    z-index: 2;
+    margin-left: auto;
+    margin-right: auto;
+}
+.giuaduoi_Home {
+    position: relative; /* Đặt vị trí tương đối cho div cha */
+    width: 100%; /* Chiều rộng của div cha */
+    max-width: 1000px; /* Chiều rộng tối đa của div cha */
+    margin: 0 auto; /* Căn giữa div cha */
+}
+
+
+
+.gioithieu_vku{
+    color: red;
+    margin-left: 8%;
+    margin-top: 2%;
+}
+.noidung_gioithieu{
+    padding: 5%;
+    padding-top: 1%;
+    padding-bottom: 0;
+    color: #007bff;
+}
+
+
