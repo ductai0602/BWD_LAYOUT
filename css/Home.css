@@ -212,7 +212,11 @@ header {
     margin: 0 auto; /* Căn giữa div cha */
 }
 
-
+.trainghiem{
+    color: #002a56;
+    text-align: center;
+    font-weight: 200;
+}
 
 .gioithieu_vku{
     color: red;
@@ -224,6 +228,29 @@ header {
     padding-top: 1%;
     padding-bottom: 0;
     color: #007bff;
+}
+.duoi2_Home_trainghiem > p{
+ text-align: center;
+}
+.anh_noidung{
+    border-radius: 2%;
+    border: 2px solid #3c76b4;
+    display: flex;
+    width: 30%;
+    height: auto;
+    padding: 1%;
+    margin-left: 8%;
+}
+.anh{
+    flex: 0.3;
+}
+.noidung{
+    margin-left: 5%;
+    flex:0.7;
+}
+.noidunglon2, .noidunglon1{
+    display: flex;
+    margin-left: 15%;
 }
 
 
