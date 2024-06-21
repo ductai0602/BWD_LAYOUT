@@ -34,7 +34,7 @@ header .dropdown-submenu:hover .dropdown-menu, .dropdown-submenu:focus .dropdown
     margin-top: -30px;
     left: 100%;
 }
-@media (max-width: 992px) {
+@media (max-width: 1301px) {
     .dropdown-menu{
         width: 50%;
     }
@@ -44,6 +44,26 @@ header .dropdown-submenu:hover .dropdown-menu, .dropdown-submenu:focus .dropdown
 
     .dropdown-menu{ left: -131%;}
 }
+
+@media (max-width: 1300px) {
+#navbarResponsive {
+    display: none !important;
+}
+.navbar-toggler {
+    display: block !important;
+}
+}
+
+@media (min-width: 1301px) {
+#navbarResponsive {
+    display: block !important;
+}
+.navbar-toggler {
+    display: none !important;
+}
+}
+
+
 
 header .dropdown-submenu a::after {
     right: 16px;
@@ -78,7 +98,8 @@ header li.nav-item{
 }
 
 header .navbar-nav.ml-auto {
-    margin-left: auto !important;
+    /* margin-left: auto !important; */
+    float: right;
 }
 
 header .btn-fix{
