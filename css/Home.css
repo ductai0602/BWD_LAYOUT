@@ -73,6 +73,10 @@ header li.nav-item{
     padding: 10px 20px;
 }
 
+.nav-item{
+    text-wrap: nowrap;
+}
+
 header .navbar-nav.ml-auto {
     margin-left: auto !important;
 }
